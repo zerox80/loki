@@ -1,0 +1,17 @@
+[Unit]
+Description=LOKI VPN host TUN, forwarding and NAT
+Wants=network-online.target
+After=network-online.target
+Before=docker.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/loki
+ExecStart=/usr/bin/python3 /opt/loki/tools/compose.py prepare
+ExecStop=/usr/bin/python3 /opt/loki/tools/compose.py network-down
+RemainAfterExit=yes
+TimeoutStartSec=30
+TimeoutStopSec=15
+
+[Install]
+WantedBy=multi-user.target

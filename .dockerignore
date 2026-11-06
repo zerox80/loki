@@ -1,0 +1,11 @@
+# Only source files needed to build the image enter its context.
+**
+!Makefile
+!LICENSE
+!include/
+!include/**
+!src/
+!src/**
+!tests/
+!tests/unit/
+!tests/unit/**
